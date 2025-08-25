@@ -1,6 +1,5 @@
 package net.saddey.java_test_sqlserver_deadlock;
 
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -20,8 +19,7 @@ import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main
 {
-  public static void main( String[] args )
-      throws SQLException, ExecutionException, InterruptedException, TimeoutException, URISyntaxException
+  public static void main( String[] args ) throws SQLException, ExecutionException, InterruptedException, TimeoutException
   {
     DriverManager.registerDriver( new SQLServerDriver() );
 
@@ -32,9 +30,9 @@ public class Main
       System.err.println( "e.g. '<connection url>' = 'jdbc:sqlserver://;trustServerCertificate=true;serverName=sql.local.'" );
       System.err.println( "NB: Use single quotes (') for Linux / macos and double quotes (\") for Windows" );
       System.err.println();
-      System.err.println( """
-          This program uses / contains the Microsoft JDBC Driver for SQL Server whose license is available at
-            https://github.com/microsoft/mssql-jdbc/blob/main/LICENSE""" );
+      System.err.println(
+          "This program uses / contains the Microsoft JDBC Driver for SQL Server whose license is available at\n"
+              + "   https://github.com/microsoft/mssql-jdbc/blob/main/LICENSE" );
       System.err.println();
       return;
     }

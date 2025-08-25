@@ -44,11 +44,11 @@ class Deadlocking
           password ))
       {
         System.out.println( cleanupExe.startWithConnection( c -> {
-          //noinspection SqlNoDataSourceInspection
-          try (final ResultSet resultSet = c.createStatement().executeQuery( """
-              select concat('And the winner is... ##testDeadlock1: ', (select top 1 dummy from ##testDeadlock1),
-                     ', ##testDeadlock2: ', (select top 1 dummy from ##testDeadlock2) );
-              """ ))
+          //noinspection SqlNoDataSourceInspection,SqlResolve
+          try (final ResultSet resultSet = c.createStatement().executeQuery( //
+              "select concat('And the winner is... " //
+                  + "##testDeadlock1: ', (select top 1 dummy from ##testDeadlock1), " //
+                  + "', ##testDeadlock2: ', (select top 1 dummy from ##testDeadlock2) );" ))
           {
             return resultSet.next() ? resultSet.getString( 1 ) : "no results";
           }

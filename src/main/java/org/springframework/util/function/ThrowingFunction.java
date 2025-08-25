@@ -79,7 +79,7 @@ public interface ThrowingFunction<T, R> extends Function<T, R> {
    * @return the replacement {@link ThrowingFunction} instance
    */
   default ThrowingFunction<T, R> throwing(BiFunction<String, Exception, RuntimeException> exceptionWrapper) {
-    return new ThrowingFunction<>() {
+    return new ThrowingFunction<T,R>() {
       @Override
       public R applyWithException(T t) throws Exception {
         return ThrowingFunction.this.applyWithException(t);
